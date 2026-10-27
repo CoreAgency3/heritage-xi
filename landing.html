@@ -15,6 +15,7 @@
 window.CFG = {
   AW_ID:   'AW-18521422229',            // 구글애즈 태그 ID
   AW_LEAD: 'AW-18521422229/8N7JCIrPsKUdEJXz2f9E', // 상담신청 전환 (전환 이벤트 스니펫의 send_to 값)
+  AW_CALL: 'AW-18521422229/dx6FCOfbsKUdEJXz2f9E', // 전화클릭 전환 (전화클릭 이벤트 스니펫의 send_to 값)
   META_ID: 'XXXXXXXXXXXXXXX'          // 메타 픽셀 ID (숫자)
 };
 (function(){
@@ -245,8 +246,17 @@ footer p+p{margin-top:8px}
   var formErr = document.getElementById('formErr');
   var params = new URLSearchParams(location.search);
 
-  document.getElementById('callBtn').addEventListener('click', function(){
-    try { if (window.fbq) fbq('track', 'Contact'); } catch(e){}
+  /* 모든 전화 버튼(tel: 링크) 클릭 시 전화클릭 전환 전송 */
+  Array.prototype.forEach.call(document.querySelectorAll('a[href^="tel:"]'), function(a){
+    a.addEventListener('click', function(){
+      try {
+        var c = window.CFG || {};
+        if (typeof window.gtag === 'function' && c.AW_CALL && c.AW_CALL.indexOf('YYYY') < 0 && c.AW_ID.indexOf('X') < 0) {
+          window.gtag('event', 'conversion', { 'send_to': c.AW_CALL });
+        }
+        if (window.fbq) fbq('track', 'Contact');
+      } catch(e){}
+    });
   });
 
   function radio(name){ var c = form.querySelector('input[name="'+name+'"]:checked'); return c ? c.value : ''; }
