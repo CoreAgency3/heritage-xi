@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>오산헤리티지자이 분양 상담 신청 | 코어에이전시</title>
-<meta name="description" content="오산헤리티지자이 1,783세대 대단지 신축. 이름과 연락처만 남기시면 상담사가 직접 연락드립니다.">
+<title>오산헤리티지자이 분양가표·평면도 받기 | 코어에이전시</title>
+<meta name="description" content="오산헤리티지자이 1,783세대 대단지 신축. 이름과 연락처만 남기시면 84㎡ 분양가표와 평면도를 문자로 보내드립니다.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="오산헤리티지자이 | 병점역 신주거타운의 중심">
-<meta property="og:description" content="1,783세대 대단지 신축 선점 기회. 1분 상담 신청.">
+<meta property="og:description" content="1,783세대 대단지 신축. 분양가표·평면도 무료로 받기.">
 <meta name="robots" content="noindex">
 
 <!-- ===== 광고 추적 설정: 아래 값만 본인 값으로 바꾸세요 (바꾸기 전에는 자동으로 꺼져 있음) ===== -->
@@ -16,7 +16,8 @@ window.CFG = {
   AW_ID:   'AW-18521422229',            // 구글애즈 태그 ID
   AW_LEAD: 'AW-18521422229/8N7JCIrPsKUdEJXz2f9E', // 상담신청 전환 (전환 이벤트 스니펫의 send_to 값)
   AW_CALL: 'AW-18521422229/dx6FCOfbsKUdEJXz2f9E', // 전화클릭 전환 (전화클릭 이벤트 스니펫의 send_to 값)
-  META_ID: 'XXXXXXXXXXXXXXX'          // 메타 픽셀 ID (숫자)
+  META_ID: 'XXXXXXXXXXXXXXX',         // 메타 픽셀 ID (숫자)
+  CLARITY_ID: 'XXXXXXXXXX'            // Microsoft Clarity 프로젝트 ID
 };
 (function(){
   var c = window.CFG;
@@ -31,6 +32,9 @@ window.CFG = {
   if (c.META_ID.indexOf('X') < 0) {
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', c.META_ID); fbq('track', 'PageView');
+  }
+  if (c.CLARITY_ID && c.CLARITY_ID.indexOf('XXXX') < 0) {
+    (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,'clarity','script',c.CLARITY_ID);
   }
 })();
 </script>
@@ -127,7 +131,7 @@ footer p+p{margin-top:8px}
 
   <header class="hero">
     <p class="brand">오산헤리티지자이 · GS건설 자이</p>
-    <span class="badge">분양 상담</span>
+    <span class="badge">분양가표·평면도 무료</span>
     <h1>오산헤리티지자이<br>병점역 신주거타운의 중심</h1>
     <ul class="points">
       <li><b>GTX-C 병점역 연장 · 동탄트램</b> 교통 호재</li>
@@ -136,14 +140,14 @@ footer p+p{margin-top:8px}
     </ul>
     <div class="price"><small>84㎡ 분양가</small><strong>7억 중후반대</strong></div>
     <p class="fine">※ 분양가는 층·타입에 따라 다르며 발코니 확장비 별도입니다. 교통 호재는 계획 단계로 변경·지연될 수 있습니다.</p>
-    <a class="cta" href="#apply">1분 상담 신청하기</a>
+    <a class="cta" href="#apply">84㎡ 분양가표·평면도 받기</a>
   </header>
 
   <main>
     <section class="apply" id="apply">
       <div id="formBox">
-        <h2>상담 신청</h2>
-        <p class="sub">이름과 연락처만 남기시면 상담사가 직접 연락드립니다. 상담은 무료입니다.</p>
+        <h2>분양가표·평면도 받기</h2>
+        <p class="sub">이름과 연락처만 남기시면 분양가표와 평면도를 문자로 보내드립니다. 상담은 원하실 때만 해드려요.</p>
 
         <form id="leadForm" novalidate>
           <div class="field">
@@ -186,7 +190,7 @@ footer p+p{margin-top:8px}
             <label class="chk" for="agree"><input type="checkbox" id="agree"><span>[필수] 개인정보 수집·이용에 동의합니다.</span></label>
             <ul>
               <li>수집 항목: 이름, 연락처, 관심 평형, 구매 목적</li>
-              <li>이용 목적: 오산헤리티지자이 분양 상담 및 안내</li>
+              <li>이용 목적: 오산헤리티지자이 분양 자료(분양가표·평면도 등) 발송, 분양 상담 및 안내</li>
               <li>보유 기간: 상담 종료 후 6개월</li>
               <li>개인정보 보호책임자: 고영화 (자세한 내용은 개인정보 처리방침 참고)</li>
             </ul>
@@ -195,15 +199,15 @@ footer p+p{margin-top:8px}
           </div>
 
           <p class="formerr" id="formErr" role="alert"></p>
-          <button type="submit" class="btn go" id="submit">무료 상담 신청하기</button>
+          <button type="submit" class="btn go" id="submit">무료로 자료 받기</button>
           <a class="btn call" href="tel:+8216887038">바로 전화하기 1688-7038</a>
         </form>
       </div>
 
       <div class="done" id="done" aria-live="polite">
         <div class="check" aria-hidden="true"></div>
-        <h2 id="doneTitle" tabindex="-1">신청이 접수되었습니다</h2>
-        <p class="sub">확인 후 남겨주신 번호로 연락드립니다.<br>바로 상담을 원하시면 지금 전화해 주세요.</p>
+        <h2 id="doneTitle" tabindex="-1">요청이 접수되었습니다</h2>
+        <p class="sub">남겨주신 번호로 분양가표와 평면도를 문자로 보내드립니다.<br>궁금한 점은 언제든 전화로 물어보세요.</p>
         <dl class="sum">
           <div><dt>이름</dt><dd id="d-name"></dd></div>
           <div><dt>연락처</dt><dd id="d-phone"></dd></div>
@@ -215,9 +219,9 @@ footer p+p{margin-top:8px}
     </section>
 
     <div class="trust">
-      <div><b>무료</b>상담 비용 없음</div>
+      <div><b>무료</b>자료 비용 없음</div>
       <div><b>1분</b>신청 소요 시간</div>
-      <div><b>1:1</b>상담사 직접 연락</div>
+      <div><b>문자</b>자료 바로 발송</div>
     </div>
     <a class="more" href="index.html">단지 정보 자세히 보기 →</a>
   </main>
@@ -229,8 +233,8 @@ footer p+p{margin-top:8px}
 </div>
 
 <nav class="dock" aria-label="상담 바로가기">
-  <a class="tel" id="callBtn" href="tel:+8216887038">전화</a>
-  <a class="apply-btn" href="#apply">상담 신청</a>
+  <a class="tel" id="callBtn" href="tel:+8216887038">전화 상담</a>
+  <a class="apply-btn" href="#apply">자료 받기</a>
 </nav>
 
 <script>
