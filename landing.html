@@ -49,10 +49,11 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 .app{max-width:520px;margin:0 auto;background:#fff;box-shadow:0 0 0 1px var(--line)}
 
-.hero{background:linear-gradient(160deg,var(--navy),var(--navy2));color:#fff;padding:calc(26px + env(safe-area-inset-top,0px)) 20px 36px}
+.hero{background:linear-gradient(160deg,var(--navy),var(--navy2));color:#fff;padding:calc(18px + env(safe-area-inset-top,0px)) 20px 22px;cursor:pointer}
+.mini{margin-top:10px;font-size:15px;opacity:.92}.mini b{color:var(--gold)}
 .brand{font-size:13px;opacity:.85}
 .badge{display:inline-block;margin-top:12px;font-size:13px;font-weight:700;color:var(--navy);background:var(--gold);border-radius:999px;padding:4px 12px}
-h1{font-size:clamp(28px,8.4vw,36px);line-height:1.3;font-weight:800;letter-spacing:-.02em;margin-top:12px}
+h1{font-size:clamp(25px,7.2vw,32px);line-height:1.3;font-weight:800;letter-spacing:-.02em;margin-top:12px}
 .points{list-style:none;margin-top:20px;display:grid;gap:10px}
 .points li{position:relative;padding-left:30px;font-size:15.5px;line-height:1.5}
 .points li::before{content:"";position:absolute;left:2px;top:4px;width:16px;height:9px;border-left:3px solid var(--gold);border-bottom:3px solid var(--gold);transform:rotate(-45deg)}
@@ -64,14 +65,20 @@ h1{font-size:clamp(28px,8.4vw,36px);line-height:1.3;font-weight:800;letter-spaci
 .hero .fine{color:rgba(255,255,255,.72);margin-top:12px}
 .cta{display:flex;align-items:center;justify-content:center;min-height:58px;margin-top:20px;border-radius:14px;background:var(--gold);color:var(--navy);font-weight:800;font-size:18px;text-decoration:none}
 
-.apply{padding:34px 20px 8px}
+.apply{padding:16px 20px 8px}
+.info{margin:26px 20px 0;padding:22px 18px;border-radius:16px;background:linear-gradient(160deg,var(--navy),var(--navy2));color:#fff}
+.info h2{color:#fff;font-size:20px}
+.info .fine{color:rgba(255,255,255,.72)}
+.info .btn.go{background:var(--gold);color:var(--navy)}
+.consent details{margin-top:8px}
+.consent summary{cursor:pointer;font-size:13.5px;color:var(--navy2);font-weight:700;padding:6px 0}
 h2{font-size:clamp(22px,6.4vw,27px);line-height:1.3;font-weight:800;letter-spacing:-.02em;color:var(--navy)}
-.sub{color:var(--mute);font-size:15px;margin:6px 0 22px}
-.field{margin-bottom:18px}
+.sub{color:var(--mute);font-size:15px;margin:6px 0 16px}
+.field{margin-bottom:12px}
 .field > label,.field > .lbl{display:block;font-weight:700;font-size:15px;margin-bottom:7px}
 .req{color:var(--red)}
 .opt-tag{font-weight:400;color:var(--mute);font-size:13px}
-input[type=text],input[type=tel]{width:100%;min-height:56px;padding:0 16px;border:2px solid var(--line);border-radius:14px;font:inherit;font-size:18px;background:#fff;color:var(--ink)}
+input[type=text],input[type=tel]{width:100%;min-height:52px;padding:0 16px;border:2px solid var(--line);border-radius:14px;font:inherit;font-size:18px;background:#fff;color:var(--ink)}
 input[type=text]:focus,input[type=tel]:focus{border-color:var(--navy2);outline:0;box-shadow:0 0 0 3px rgba(19,48,90,.18)}
 input.bad{border-color:var(--red)}
 .err{color:var(--red);font-size:14px;margin-top:6px}
@@ -85,7 +92,7 @@ input.bad{border-color:var(--red)}
 .chip input:checked + span{border-color:var(--navy2);background:#eaf0f9;color:var(--navy2)}
 .chip input:focus-visible + span{outline:3px solid var(--gold);outline-offset:2px}
 
-.consent{background:var(--bg);border-radius:14px;padding:16px;margin-top:4px}
+.consent{background:var(--bg);border-radius:14px;padding:12px 14px;margin-top:2px}
 .consent .chk{display:flex;gap:12px;align-items:flex-start;cursor:pointer;font-weight:700;font-size:15.5px}
 .consent .chk input{flex:none;width:24px;height:24px;margin-top:1px;accent-color:var(--navy2)}
 .consent ul{margin:12px 0 0 2px;padding-left:18px;font-size:13.5px;color:var(--mute);line-height:1.6}
@@ -95,7 +102,7 @@ input.bad{border-color:var(--red)}
 .formerr a{font-weight:700}
 
 .btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:60px;border-radius:14px;font-weight:800;font-size:18px;text-decoration:none;text-align:center}
-.btn.go{background:var(--navy);color:#fff;margin-top:18px}
+.btn.go{background:var(--navy);color:#fff;margin-top:12px}
 .btn.go[disabled]{opacity:.55;cursor:wait}
 .btn.call{background:var(--gold);color:var(--navy);margin-top:12px}
 
@@ -123,6 +130,7 @@ footer p+p{margin-top:8px}
 .dock a{flex:1;max-width:250px;min-height:50px;display:flex;align-items:center;justify-content:center;border-radius:12px;font-weight:800;font-size:16px;text-decoration:none}
 .dock .tel{background:var(--gold);color:var(--navy)}
 .dock .apply-btn{background:var(--navy);color:#fff}
+.dock{transition:transform .2s}.dock.off{transform:translateY(110%)}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
@@ -133,21 +141,14 @@ footer p+p{margin-top:8px}
     <p class="brand">오산헤리티지자이 · GS건설 자이</p>
     <span class="badge">분양가표·평면도 무료</span>
     <h1>오산헤리티지자이<br>병점역 신주거타운의 중심</h1>
-    <ul class="points">
-      <li><b>GTX-C 병점역 연장 · 동탄트램</b> 교통 호재</li>
-      <li><b>삼성전자 화성·기흥캠퍼스</b> 종사자 약 14.5만 명 생활권</li>
-      <li><b>1,783세대 대단지 신축</b>, 청약통장 없이 계약 가능</li>
-    </ul>
-    <div class="price"><small>84㎡ 분양가</small><strong>7억 중후반대</strong></div>
-    <p class="fine">※ 분양가는 층·타입에 따라 다르며 발코니 확장비 별도입니다. 교통 호재는 계획 단계로 변경·지연될 수 있습니다.</p>
-    <a class="cta" href="#apply">84㎡ 분양가표·평면도 받기</a>
+    <p class="mini">1,783세대 대단지 · 84㎡ 분양가 <b>7억 중후반대</b></p>
   </header>
 
   <main>
     <section class="apply" id="apply">
       <div id="formBox">
-        <h2>분양가표·평면도 받기</h2>
-        <p class="sub">이름과 연락처만 남기시면 분양가표와 평면도를 문자로 보내드립니다. 상담은 원하실 때만 해드려요.</p>
+        <h2 style="font-size:22px">84㎡ 분양가표·평면도 무료 받기</h2>
+        <p class="sub">이름과 번호만 남기면 문자로 보내드려요. 상담은 원하실 때만.</p>
 
         <form id="leadForm" novalidate>
           <div class="field">
@@ -162,45 +163,25 @@ footer p+p{margin-top:8px}
             <p class="err" id="phoneErr" role="alert"></p>
           </div>
 
-          <div class="field" role="radiogroup" aria-labelledby="sizeLbl">
-            <span class="lbl" id="sizeLbl">관심 평형 <span class="opt-tag">(선택)</span></span>
-            <div class="chips">
-              <label class="chip"><input type="radio" name="size" value="75㎡"><span>75㎡</span></label>
-              <label class="chip"><input type="radio" name="size" value="84㎡"><span>84㎡</span></label>
-              <label class="chip"><input type="radio" name="size" value="102㎡"><span>102㎡</span></label>
-              <label class="chip"><input type="radio" name="size" value="124㎡"><span>124㎡</span></label>
-              <label class="chip"><input type="radio" name="size" value="166㎡ PH"><span>166㎡ PH</span></label>
-              <label class="chip"><input type="radio" name="size" value="미정"><span>미정</span></label>
-            </div>
-          </div>
-
-          <div class="field" role="radiogroup" aria-labelledby="purposeLbl">
-            <span class="lbl" id="purposeLbl">구매 목적 <span class="opt-tag">(선택)</span></span>
-            <div class="chips two">
-              <label class="chip"><input type="radio" name="purpose" value="실거주"><span>실거주</span></label>
-              <label class="chip"><input type="radio" name="purpose" value="투자"><span>투자</span></label>
-              <label class="chip"><input type="radio" name="purpose" value="실거주 + 투자"><span>실거주 + 투자</span></label>
-              <label class="chip"><input type="radio" name="purpose" value="아직 고민 중"><span>아직 고민 중</span></label>
-            </div>
-          </div>
-
           <div class="hp" aria-hidden="true"><label for="company">회사</label><input type="text" id="company" tabindex="-1" autocomplete="off"></div>
 
           <div class="consent">
             <label class="chk" for="agree"><input type="checkbox" id="agree"><span>[필수] 개인정보 수집·이용에 동의합니다.</span></label>
-            <ul>
-              <li>수집 항목: 이름, 연락처, 관심 평형, 구매 목적</li>
-              <li>이용 목적: 오산헤리티지자이 분양 자료(분양가표·평면도 등) 발송, 분양 상담 및 안내</li>
-              <li>보유 기간: 상담 종료 후 6개월</li>
-              <li>개인정보 보호책임자: 고영화 (자세한 내용은 개인정보 처리방침 참고)</li>
-            </ul>
-            <a class="policy" href="privacy.html" target="_blank" rel="noopener">개인정보 처리방침 보기</a>
+            <details>
+              <summary>내용 보기</summary>
+              <ul>
+                <li>수집 항목: 이름, 연락처</li>
+                <li>이용 목적: 오산헤리티지자이 분양 자료(분양가표·평면도 등) 발송, 분양 상담 및 안내</li>
+                <li>보유 기간: 상담 종료 후 6개월</li>
+                <li>개인정보 보호책임자: 고영화</li>
+              </ul>
+              <a class="policy" href="privacy.html" target="_blank" rel="noopener">개인정보 처리방침 보기</a>
+            </details>
             <p class="err" id="agreeErr" role="alert"></p>
           </div>
 
           <p class="formerr" id="formErr" role="alert"></p>
           <button type="submit" class="btn go" id="submit">무료로 자료 받기</button>
-          <a class="btn call" href="tel:+8216887038">바로 전화하기 1688-7038</a>
         </form>
       </div>
 
@@ -211,11 +192,24 @@ footer p+p{margin-top:8px}
         <dl class="sum">
           <div><dt>이름</dt><dd id="d-name"></dd></div>
           <div><dt>연락처</dt><dd id="d-phone"></dd></div>
-          <div><dt>관심 평형</dt><dd id="d-size"></dd></div>
-          <div><dt>구매 목적</dt><dd id="d-purpose"></dd></div>
+          <div hidden><dt>관심 평형</dt><dd id="d-size"></dd></div>
+          <div hidden><dt>구매 목적</dt><dd id="d-purpose"></dd></div>
         </dl>
         <a class="btn call" href="tel:+8216887038">지금 전화 상담 1688-7038</a>
       </div>
+    </section>
+
+    <section class="info">
+      <h2>오산헤리티지자이 핵심 정보</h2>
+      <ul class="points">
+        <li><b>GTX-C 병점역 연장 · 동탄트램</b> 교통 호재</li>
+        <li><b>삼성전자 화성·기흥캠퍼스</b> 종사자 약 14.5만 명 생활권</li>
+        <li><b>1,783세대 대단지 신축</b>, 청약통장 없이 계약 가능</li>
+      </ul>
+      <div class="price"><small>84㎡ 분양가</small><strong>7억 중후반대</strong></div>
+      <p class="fine">※ 분양가는 층·타입에 따라 다르며 발코니 확장비 별도입니다. 교통 호재는 계획 단계로 변경·지연될 수 있습니다.</p>
+      <a class="btn go" href="#apply" data-focus>분양가표·평면도 받기</a>
+      <a class="btn call" href="tel:+8216887038">바로 전화하기 1688-7038</a>
     </section>
 
     <div class="trust">
@@ -234,7 +228,7 @@ footer p+p{margin-top:8px}
 
 <nav class="dock" aria-label="상담 바로가기">
   <a class="tel" id="callBtn" href="tel:+8216887038">전화 상담</a>
-  <a class="apply-btn" href="#apply">자료 받기</a>
+  <a class="apply-btn" href="#apply" data-focus>자료 받기</a>
 </nav>
 
 <script>
@@ -262,6 +256,22 @@ footer p+p{margin-top:8px}
       } catch(e){}
     });
   });
+
+  function goForm(e){
+    if (e) e.preventDefault();
+    var box = document.getElementById('formBox');
+    if (box.style.display === 'none') { document.getElementById('apply').scrollIntoView(); return; }
+    document.getElementById('apply').scrollIntoView({behavior:'smooth'});
+    setTimeout(function(){ try{ nameEl.focus({preventScroll:true}); }catch(x){ nameEl.focus(); } }, 350);
+  }
+  document.querySelector('.hero').addEventListener('click', goForm);
+  /* 신청서가 화면에 보이는 동안 하단 고정 버튼을 숨겨 제출 버튼이 가려지지 않게 함 */
+  if ('IntersectionObserver' in window) {
+    var dock = document.querySelector('.dock');
+    new IntersectionObserver(function(es){ dock.classList.toggle('off', es[0].isIntersecting); }, {threshold:0.15})
+      .observe(document.getElementById('apply'));
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-focus]'), function(a){ a.addEventListener('click', goForm); });
 
   function radio(name){ var c = form.querySelector('input[name="'+name+'"]:checked'); return c ? c.value : ''; }
   function showError(html){ formErr.innerHTML = html; formErr.classList.add('on'); }
