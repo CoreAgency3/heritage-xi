@@ -130,6 +130,14 @@ footer p+p{margin-top:8px}
 .dock a{flex:1;max-width:250px;min-height:50px;display:flex;align-items:center;justify-content:center;border-radius:12px;font-weight:800;font-size:16px;text-decoration:none}
 .dock .tel{background:var(--gold);color:var(--navy)}
 .dock .apply-btn{background:var(--navy);color:#fff}
+.sheet{position:fixed;inset:0;z-index:50;background:rgba(11,31,58,.55);display:none;align-items:flex-end;justify-content:center}
+.sheet.on{display:flex}
+.sheet-box{width:100%;max-width:520px;background:#fff;border-radius:18px 18px 0 0;padding:22px 20px calc(18px + env(safe-area-inset-bottom,0px));text-align:center}
+.sheet-t{font-weight:800;font-size:18px;color:var(--navy)}
+.sheet-n{font-size:28px;font-weight:800;color:var(--navy2);margin-top:6px}
+.sheet-s{font-size:13.5px;color:var(--mute);margin-top:2px}
+.sheet-box .btn.call{margin-top:16px}
+.sheet-x{display:block;width:100%;min-height:52px;margin-top:8px;font-weight:700;color:var(--mute);font-size:16px}
 .dock{transition:transform .2s}.dock.off{transform:translateY(110%)}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
@@ -226,6 +234,16 @@ footer p+p{margin-top:8px}
   </footer>
 </div>
 
+<div class="sheet" id="callSheet" role="dialog" aria-modal="true" aria-labelledby="callTitle">
+  <div class="sheet-box">
+    <p class="sheet-t" id="callTitle">상담 전화로 연결할까요?</p>
+    <p class="sheet-n">1688-7038</p>
+    <p class="sheet-s">코어에이전시 분양 상담 (07:00~23:00)</p>
+    <a class="btn call" id="callGo" href="tel:+8216887038">전화하기</a>
+    <button type="button" class="sheet-x" id="callCancel">취소</button>
+  </div>
+</div>
+
 <nav class="dock" aria-label="상담 바로가기">
   <a class="tel" id="callBtn" href="tel:+8216887038">전화 상담</a>
   <a class="apply-btn" href="#apply" data-focus>자료 받기</a>
@@ -244,17 +262,36 @@ footer p+p{margin-top:8px}
   var formErr = document.getElementById('formErr');
   var params = new URLSearchParams(location.search);
 
-  /* 모든 전화 버튼(tel: 링크) 클릭 시 전화클릭 전환 전송 */
-  Array.prototype.forEach.call(document.querySelectorAll('a[href^="tel:"]'), function(a){
-    a.addEventListener('click', function(){
-      try {
-        var c = window.CFG || {};
-        if (typeof window.gtag === 'function' && c.AW_CALL && c.AW_CALL.indexOf('YYYY') < 0 && c.AW_ID.indexOf('X') < 0) {
-          window.gtag('event', 'conversion', { 'send_to': c.AW_CALL });
-        }
-        if (window.fbq) fbq('track', 'Contact');
-      } catch(e){}
-    });
+  /* 전화 버튼: 확인 창 → [전화하기]를 누를 때만 전환 기록 + 슬랙 알림 */
+  var sheet = document.getElementById('callSheet');
+  function openSheet(){ sheet.classList.add('on'); document.getElementById('callGo').focus(); }
+  function closeSheet(){ sheet.classList.remove('on'); }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
+    if (!a || a.id === 'callGo') return;
+    e.preventDefault(); openSheet();
+  });
+  document.getElementById('callCancel').addEventListener('click', closeSheet);
+  sheet.addEventListener('click', function(e){ if (e.target === sheet) closeSheet(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeSheet(); });
+  document.getElementById('callGo').addEventListener('click', function(){
+    try {
+      var c = window.CFG || {};
+      if (typeof window.gtag === 'function' && c.AW_CALL && c.AW_CALL.indexOf('YYYY') < 0 && c.AW_ID.indexOf('X') < 0) {
+        window.gtag('event', 'conversion', { 'send_to': c.AW_CALL });
+      }
+      if (window.fbq) fbq('track', 'Contact');
+      if (ENDPOINT) {
+        var b = new URLSearchParams({
+          name: '(전화 연결 시도)', phone: '-', size: '-', purpose: '전화 버튼', consent: '-',
+          utm_source: params.get('utm_source') || '', utm_medium: params.get('utm_medium') || '',
+          utm_campaign: params.get('utm_campaign') || '', page: location.origin + location.pathname
+        });
+        if (navigator.sendBeacon) navigator.sendBeacon(ENDPOINT, b);
+        else fetch(ENDPOINT, { method:'POST', mode:'no-cors', body:b, keepalive:true });
+      }
+    } catch(x){}
+    setTimeout(closeSheet, 300);
   });
 
   function goForm(e){
